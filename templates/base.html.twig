@@ -3,17 +3,42 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {{ encore_entry_link_tags('app') }}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    {% block header %}
+        <header>
+            <nav class="nav-desktop">
+                <div class="nav-img">
+                    <img src="{{ asset('asset/img/logo.png')}}" alt="Logo">
+                </div>
+                <ul>
+                    <li><a href="{{path('home')}}">Accueil</svg></a></li>
+                    <li><a href="{{path('museum')}}">Découvrir</a></li>
+                    {% if is_granted('ROLE_USER')%}
+                    <li><a href="{{path('addcard')}}">Créer une carte</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') == false %}
+                        <li><a href="{{path('login')}}">Connexion</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a href="{{path('logout')}}">Déconnexion</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        {% endblock %}
+        {% block main %}{% endblock %}
     </body>
+    <footer>
+        <nav class="nav-desktop">
+                <ul>
+                    <li><a href="{{path('home')}}">Accueil</svg></a></li>
+                    <li><a href="{{path('museum')}}">Découvrir</a></li>
+                </ul>
+                <div class="nav-img">
+                    <img src="{{ asset('asset/img/logo.png')}}" alt="Logo">
+                </div>
+            </nav>
+    </footer>
 </html>
