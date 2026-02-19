@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class CardController extends AbstractController
 {
-    #[Route('/card/addcard', name: 'addcard')]
+    #[Route('/cartes/creation/step1', name: 'addcard')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $card = new Card();

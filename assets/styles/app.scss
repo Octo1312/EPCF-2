@@ -1,16 +1,16 @@
-// // Abstracts
-// @use "scss/abstracts/variable";
-// @use "scss/abstracts/mixin";
-// @use "scss/abstracts/font";
+// Abstracts
+@use "scss/abstracts/font";
+@use "scss/abstracts/mixin";
+@use "scss/abstracts/variable";
 
-// // Base
-// @use "scss/base/normalize";
-// @use "scss/base/reset";
+// Base
+@use "scss/base/normalize";
+@use "scss/base/reset";
 
-// // Layout
-// @use "scss/layout/header";
-// @use "scss/layout/body";
-// @use "scss/layout/footer";
-// @use "scss/layout/responsive";
+// Layout
+@use "scss/layouts/body";
+@use "scss/layouts/footer";
+@use "scss/layouts/header";
+@use "scss/layouts/responsive";
 
 // // Pages

@@ -22,10 +22,10 @@ class Card
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable:true)]
     private ?string $effect = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $strength = null;
 
     #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
@@ -56,7 +56,7 @@ class Card
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $toughness = null;
 
     public function __construct()
