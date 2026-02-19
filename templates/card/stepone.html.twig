@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Assistant de création de cartes - Étape 1 {% endblock %}
+
+{% block body %}
+    <div class="form container">
+{{ form_start(stepone) }}
+    {{form_row(stepone.name, {
+        'label': 'Nom de votre carte'
+    }) }}
+    {{form_row(stepone.effect, {
+        'label': 'Effet de votre carte'
+    }) }}
+    <button>Étape suivante</button>
+{{ form_end(stepone) }}
+{% endblock %}
