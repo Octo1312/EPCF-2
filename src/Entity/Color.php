@@ -30,6 +30,15 @@ class Color
     #[ORM\OneToMany(targetEntity: Ressource::class, mappedBy: 'color')]
     private Collection $ressources;
 
+    #[ORM\Column(length: 255)]
+    private ?string $symbole = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $frame = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stats = null;
+
     public function __construct()
     {
         $this->cards = new ArrayCollection();
@@ -109,6 +118,42 @@ class Color
                 $ressource->setColor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSymbole(): ?string
+    {
+        return $this->symbole;
+    }
+
+    public function setSymbole(string $symbole): static
+    {
+        $this->symbole = $symbole;
+
+        return $this;
+    }
+
+    public function getFrame(): ?string
+    {
+        return $this->frame;
+    }
+
+    public function setFrame(string $frame): static
+    {
+        $this->frame = $frame;
+
+        return $this;
+    }
+
+    public function getStats(): ?string
+    {
+        return $this->stats;
+    }
+
+    public function setStats(?string $stats): static
+    {
+        $this->stats = $stats;
 
         return $this;
     }

@@ -4,9 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Card;
 use App\Entity\Color;
+use App\Entity\Type;
+use App\Form\AddStepFiveType;
+use App\Form\AddStepFourType;
 use App\Form\AddStepOneType;
+use App\Form\AddStepThreeType;
 use App\Form\AddStepTwoType;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Stmt\If_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,22 +56,93 @@ final class CardController extends AbstractController
     public function stepTwo(Card $card,Request $request, EntityManagerInterface $entityManager): Response
     {
 
-        // $form = $this->createForm(AddStepTwoType::class, $card);
+        $form = $this->createForm(AddStepTwoType::class, $card);
 
-        // $form->handleRequest($request);
-        
-        // if ($form->isSubmitted()) {
-            
-        //     $card->setUser($this->getUser());
-        //     $entityManager->persist($card);
-        //     $entityManager->flush();
-            
-        //     $this->addFlash('success','Étape validé avec succès !');
-        //     return $this->redirectToRoute('home');
-        
-        // }
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+           
+            $card->setUser($this->getUser());
+            $entityManager->persist($card);
+            $entityManager->flush();
+            $id = $card->getId();
+            $this->addFlash('success','Étape validé avec succès !');
+            if ($card->getType()->getLabel() == 'Créature' ){
+                return $this->redirectToRoute('stepthree', ['id' => $id]);
+            } else {
+                return $this->redirectToRoute('stepfour', ['id' => $id]);
+            }
+        }
         return $this->render('card/steptwo.html.twig', [
-            // 'steptwo'=>$form->createView(),
+            'steptwo'=>$form->createView(),
+        ]);
+    }
+
+    #[Route('/cartes/creation/step3/{id}', name: 'stepthree')]
+    public function stepThree(Card $card,Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $form = $this->createForm(AddStepThreeType::class, $card);
+
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            
+            $card->setUser($this->getUser());
+            $entityManager->persist($card);
+            $entityManager->flush();
+            $id = $card->getId();
+            $this->addFlash('success','Étape validé avec succès !');
+            return $this->redirectToRoute('stepfour', ['id' => $id]);
+        
+        }
+        return $this->render('card/stepthree.html.twig', [
+            'stepthree'=>$form->createView(),
+        ]);
+    }
+
+    #[Route('/cartes/creation/step4/{id}', name: 'stepfour')]
+    public function stepFour(Card $card,Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $form = $this->createForm(AddStepFourType::class, $card);
+
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            
+            $card->setUser($this->getUser());
+            $entityManager->persist($card);
+            $entityManager->flush();
+            $id = $card->getId();
+            $this->addFlash('success','Étape validé avec succès !');
+            return $this->redirectToRoute('stepfive', ['id' => $id]);
+        
+        }
+        return $this->render('card/stepfour.html.twig', [
+            'stepfour'=>$form->createView(),
+        ]);
+    }
+
+    #[Route('/cartes/creation/step5/{id}', name: 'stepfive')]
+    public function stepFive(Card $card,Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $form = $this->createForm(AddStepFiveType::class, $card);
+
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            
+            $card->setUser($this->getUser());
+            $entityManager->persist($card);
+            $entityManager->flush();
+            
+            $this->addFlash('success','Étape validé avec succès !');
+            return $this->redirectToRoute('home');
+        
+        }
+        return $this->render('card/stepfive.html.twig', [
+            'stepfive'=>$form->createView(),
         ]);
     }
 }

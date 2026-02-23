@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Assistant de création de cartes - Étape 2 {% endblock %}
+{% block title %} Assistant de création de cartes - Étape 4 {% endblock %}
 
 {% block body %}
     <div class="form container">
-{{ form_start(steptwo) }}
-    {{form_row(steptwo.type, {
-        'label': 'Type de votre carte'
+{{ form_start(stepfour) }}
+    {{form_row(stepfour.color, {
+        'label': 'Couleur de votre carte'
     }) }}
     <div class="formbtn">
         <button class="btn" type="submit">Étape suivante</button>
     </div>
-{{ form_end(steptwo) }}
+{{ form_end(stepfour) }}
 {% endblock %}

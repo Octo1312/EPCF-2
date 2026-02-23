@@ -11,15 +11,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddStepTwoType extends AbstractType
+class AddStepThreeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type', EntityType::class, [
-                'class' => Type::class,
-                'choice_label' => 'label',
-            ])
+            ->add('strength')
+            ->add('toughness')
         ;
     }
 

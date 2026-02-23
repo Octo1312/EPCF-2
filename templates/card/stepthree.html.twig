@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Assistant de création de cartes - Étape 3 {% endblock %}
+
+{% block body %}
+    <div class="form container">
+{{ form_start(stepthree) }}
+    {{form_row(stepthree.strength, {
+        'label': 'Force de votre carte'
+    }) }}
+    {{form_row(stepthree.toughness, {
+        'label': 'Endurance de votre carte'
+    }) }}
+    <div class="formbtn">
+        <button class="btn" type="submit">Étape suivante</button>
+    </div>
+{{ form_end(stepthree) }}
+{% endblock %}
