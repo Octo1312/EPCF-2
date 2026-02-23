@@ -10,8 +10,9 @@ use App\Form\AddStepFourType;
 use App\Form\AddStepOneType;
 use App\Form\AddStepThreeType;
 use App\Form\AddStepTwoType;
+use App\Form\DetailsCardType;
+use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpParser\Node\Stmt\If_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
@@ -136,14 +137,35 @@ final class CardController extends AbstractController
             $card->setUser($this->getUser());
             $entityManager->persist($card);
             $entityManager->flush();
-            
+            $id = $card->getId();
             $this->addFlash('success','Étape validé avec succès !');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('detailscard', ['id' => $id]);
         
         }
         return $this->render('card/stepfive.html.twig', [
             'stepfive'=>$form->createView(),
         ]);
+    }
+
+    #[Route('/card/detailscard/{id}', name: 'detailscard')]
+    public function details(Card $card, CardRepository $cardRepository, Request $request, EntityManagerInterface $entityManager, Security $security): Response
+    {
+        $card = $cardRepository->findOneBy(['id' => $card->getId()]);
+        return $this->render('card/detailscard.html.twig', [
+            'card' => $card,
+        ]);
+    }
+    
+    #[Route('/card/deletecard/{id}', name: 'deletecard')]
+    public function remove(Card $card, Request $request, EntityManagerInterface $entityManager)
+    {
+        
+        if($this->isCsrfTokenValid('SUP'.$card->getId(),$request->get('_token'))){
+            $entityManager->remove($card);
+            $entityManager->flush();
+            $this->addFlash('success','La suppression à été effectuée');
+            return $this->redirectToRoute('home');
+        }
     }
 }
 
