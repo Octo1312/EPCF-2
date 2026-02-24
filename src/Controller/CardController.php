@@ -46,7 +46,7 @@ final class CardController extends AbstractController
             
             $this->addFlash('success','Étape validé avec succès !');
             $id = $card->getId();
-            return $this->redirectToRoute('stepfour', ['id' => $id]);
+            return $this->redirectToRoute('steptwo', ['id' => $id]);
         
         }
         return $this->render('card/stepone.html.twig', [

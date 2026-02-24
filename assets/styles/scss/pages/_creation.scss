@@ -1,0 +1,87 @@
+@use "../abstracts/variable" as variable;
+@use "../abstracts/mixin" as mix;
+
+body {
+    #creation {
+        background-color: #232C33;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+
+        .container {
+            @include mix.container;
+            text-align: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5vh;
+
+            h1 {
+                color: #F4F1DE;
+                font-size: 2rem;
+            }
+
+            p {
+                color: #F4F1DE;
+                font-size: 1.5rem;
+            }
+
+            a {
+                border: 1px solid #823038;
+                background-color: #823038;
+                border-radius: 1rem;
+                color: #F4F1DE;
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-decoration: none;
+                position: relative;
+            }
+        }
+    }
+
+    #nameandeffect, #type, #creature, #color, #artwork {
+        background-color: #232C33;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+
+        .container {
+            @include mix.container;
+            text-align: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5vh;
+
+            label {
+                color: #F4F1DE;
+                font-size: 2rem;
+                display: block;
+                padding-bottom: 2rem;
+                padding-top: 2rem;
+            }
+
+            input, textarea, select {
+                color: #823038;
+                font-size: 1.5rem;
+                padding: 2rem;
+                border-radius: 1rem;
+            }
+
+            button {
+                margin-top: 1rem;
+                border: 1px solid #823038;
+                background-color: #823038;
+                border-radius: 1rem;
+                color: #F4F1DE;
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-decoration: none;
+                position: relative;
+            }
+        }
+    }
+}

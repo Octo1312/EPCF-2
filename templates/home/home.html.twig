@@ -5,7 +5,7 @@
 {% block body %}
 <section id="banner">
     <div class="banner_container">
-        <h1>Bienvenue</h1>
+        <h1>Créer, modifie, découvre et partage tes créations de cartes customisés !</h1>
     </div>
 </section>
 
@@ -13,7 +13,7 @@
     <div class="container">
         <h2>Les dernières créations</h2>
         <div class="cards container">
-        {% for card in cards %}
+            {% for card in cards %}
             <div class="card">
             <div class="card-frame">
                 <img src="{{ asset('asset/img/' ~ card.color.frame) }}" alt="Frame card">
@@ -25,7 +25,7 @@
                 <img src="{{ asset('asset/uploads/images/' ~ card.imageName) }}" alt="Img card">
             </div>
             <div class="card-title">        
-                <h2>{{ card.name }}</h2>
+                <h3>{{ card.name }}</h3>
             </div>
             <div class="card-effect">
                 <p>{{ card.effect }}</p>
@@ -34,8 +34,11 @@
                 <p>{{ card.strength }}/ </p>
                 <p>{{ card.toughness }}</p>
             </div>
+            <div class="card-details">
+                <a href="{{path('detailscard',{'id' : card.id})}}">Plus d'informations ici</a>
             </div>
-        {% endfor %}    
+            </div>
+            {% endfor %}    
         </div>
     </div>
 </section>

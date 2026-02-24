@@ -3,9 +3,11 @@
 {% block title %}Assistant de création de cartes{% endblock %}
 
 {% block body %}
-    <section class="container">
-    <h1>Bienvenue dans l'assistant de création de cartes</h1>
-    <p>Grâce à notre système vous allez pouvoir créer en quelques étapes la carte custom de vos rêves</p>
-    <a href="{{path('stepone')}}">Créer votre carte ici</a>
+    <section id="creation">
+        <div class="container">
+            <h1>Bienvenue dans l'assistant de création de cartes</h1>
+            <p>Grâce à notre système vous allez pouvoir créer en quelques étapes la carte custom de vos rêves !</p>
+            <a href="{{path('stepone')}}">Créer votre carte ici</a>
+        </div>
     </section>
 {% endblock %}

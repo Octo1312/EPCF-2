@@ -13,7 +13,7 @@ final class HomeController extends AbstractController
     public function index(CardRepository $cardRepository): Response
     {
 
-        $card = $cardRepository->findFour();
+        $card = $cardRepository->findThree();
         return $this->render('home/home.html.twig', [
             "cards" => $card,
         ]);

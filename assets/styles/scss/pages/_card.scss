@@ -2,7 +2,7 @@
 @use "../abstracts/mixin" as mix;
 .cards {
     display: flex;
-    gap: 40vh;
+    flex-wrap: wrap;
     position: relative;
 
     .card {
@@ -12,6 +12,8 @@
     position: relative;
     width: 402px;
     z-index: 0;
+    width: 33%;
+    
     
     
     .card-img {
@@ -26,7 +28,6 @@
 
     .card-frame {
         z-index: 2;
-        position: absolute;
         img {
             width: 402px;
         }
@@ -44,7 +45,7 @@
 
     .card-title {
         z-index: 3;
-        h2 {
+        h3 {
             position: absolute;
             font-size: 1.5rem;
             top: 6.5vh;
@@ -55,9 +56,10 @@
     .card-effect {
         z-index: 5;
         p {
+            padding-left: 1rem;
             position: absolute;
             font-size: 1.2rem;
-            width: 88%;
+            width: 50%;
             text-align: left;
             top: 42vh;
             left: 7vh;
@@ -74,6 +76,23 @@
         p {
             color: black;
             font-size: 1.8rem;
+        }
+    }
+
+    .card-details {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        justify-content: left;
+        a {
+            border: 1px solid #823038;
+            background-color: #823038;
+            border-radius: 1rem;
+            color: #F4F1DE;
+            font-size: 1.2rem;
+            padding: 1rem;
+            text-decoration: none;
+            position: relative;
         }
     }
 }
