@@ -11,6 +11,7 @@ use App\Form\AddStepOneType;
 use App\Form\AddStepThreeType;
 use App\Form\AddStepTwoType;
 use App\Form\DetailsCardType;
+use App\Form\ModifyCardType;
 use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +46,7 @@ final class CardController extends AbstractController
             
             $this->addFlash('success','Étape validé avec succès !');
             $id = $card->getId();
-            return $this->redirectToRoute('steptwo', ['id' => $id]);
+            return $this->redirectToRoute('stepfour', ['id' => $id]);
         
         }
         return $this->render('card/stepone.html.twig', [
@@ -147,7 +148,7 @@ final class CardController extends AbstractController
         ]);
     }
 
-    #[Route('/card/detailscard/{id}', name: 'detailscard')]
+    #[Route('/cartes/detailscard/{id}', name: 'detailscard')]
     public function details(Card $card, CardRepository $cardRepository, Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         $card = $cardRepository->findOneBy(['id' => $card->getId()]);
@@ -156,7 +157,7 @@ final class CardController extends AbstractController
         ]);
     }
     
-    #[Route('/card/deletecard/{id}', name: 'deletecard')]
+    #[Route('/cartes/deletecard/{id}', name: 'deletecard')]
     public function remove(Card $card, Request $request, EntityManagerInterface $entityManager)
     {
         
@@ -166,6 +167,29 @@ final class CardController extends AbstractController
             $this->addFlash('success','La suppression à été effectuée');
             return $this->redirectToRoute('home');
         }
+    }
+
+    #[Route('/cartes/modifycard/{id}', name: 'modifycard')]
+    public function modifyCard(Card $card,Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $form = $this->createForm(ModifyCardType::class, $card);
+
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            
+            $card->setUser($this->getUser());
+            $entityManager->persist($card);
+            $entityManager->flush();
+            $id = $card->getId();
+            $this->addFlash('success','Modification validé avec succès !');
+            return $this->redirectToRoute('detailscard', ['id' => $id]);
+        
+        }
+        return $this->render('card/modifycard.html.twig', [
+            'modifycard'=>$form->createView(),
+        ]);
     }
 }
 

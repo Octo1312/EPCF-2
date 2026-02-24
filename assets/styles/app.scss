@@ -13,4 +13,10 @@
 @use "scss/layouts/header";
 @use "scss/layouts/responsive";
 
-// // Pages
+// Pages
+@use "scss/pages/home";
+@use "scss/pages/login";
+@use "scss/pages/museum";
+@use "scss/pages/register";
+@use "scss/pages/card";
+@use "scss/pages/details";

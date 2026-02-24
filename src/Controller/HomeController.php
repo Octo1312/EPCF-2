@@ -13,9 +13,9 @@ final class HomeController extends AbstractController
     public function index(CardRepository $cardRepository): Response
     {
 
-        $card = $cardRepository->findAll();
+        $card = $cardRepository->findFour();
         return $this->render('home/home.html.twig', [
-            "card" => $card,
+            "cards" => $card,
         ]);
     }
 
@@ -24,7 +24,7 @@ final class HomeController extends AbstractController
     {   
         $card = $cardRepository->findAll();
         return $this->render('home/museum.html.twig', [
-            "card" => $card,
+            "cards" => $card,
         ]);
     }
 }

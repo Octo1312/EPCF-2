@@ -1,0 +1,52 @@
+@use "../abstracts/variable" as variable;
+@use "../abstracts/mixin" as mix;
+
+#registerpage {
+    background-color: #232C33;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    .container {
+        @include mix.container;
+        background-color: #F4F1DE;
+        border-radius: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    form {
+        text-align: center;
+
+        label {
+            font-size: 1.5rem;
+            display: block;
+            color: #823038;
+        }
+
+        input {
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            border: none;
+            padding: 1rem;
+            color: #823038;
+        }
+
+        button {
+            background-color: #232C33;
+            color: #F4F1DE;
+            width: 30%;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: none;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+    }
+}

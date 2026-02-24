@@ -3,6 +3,7 @@
 {% block title %} Assistant de création de cartes - Étape 1 {% endblock %}
 
 {% block body %}
+<section id="nameandeffect">
     <div class="form container">
 {{ form_start(stepone) }}
     {{form_row(stepone.name, {
@@ -13,4 +14,5 @@
     }) }}
     <button>Étape suivante</button>
 {{ form_end(stepone) }}
+</section>
 {% endblock %}

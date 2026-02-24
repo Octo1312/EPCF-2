@@ -1,0 +1,80 @@
+@use "../abstracts/variable" as variable;
+@use "../abstracts/mixin" as mix;
+.cards {
+    display: flex;
+    gap: 40vh;
+    position: relative;
+
+    .card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 402px;
+    z-index: 0;
+    
+    
+    .card-img {
+        position: absolute;
+        img {
+            height: 55vh;
+            width: 40vh;
+            z-index: 1;
+            object-fit: cover;
+        }
+    }
+
+    .card-frame {
+        z-index: 2;
+        position: absolute;
+        img {
+            width: 402px;
+        }
+    }
+
+    .card-stats {
+        z-index: 3;
+        img {
+            position: absolute;
+            height: 60px;
+            top: 54vh;
+            left: 32vh;
+        }
+    }
+
+    .card-title {
+        z-index: 3;
+        h2 {
+            position: absolute;
+            font-size: 1.5rem;
+            top: 6.5vh;
+            left: 7vh;
+        }
+    }
+
+    .card-effect {
+        z-index: 5;
+        p {
+            position: absolute;
+            font-size: 1.2rem;
+            width: 88%;
+            text-align: left;
+            top: 42vh;
+            left: 7vh;
+            color: #F4F1DE;
+        }
+    }
+
+    .card-power {
+        z-index: 6;
+        display: flex;
+        position: absolute;
+        top: 55vh;
+        left: 36vh;
+        p {
+            color: black;
+            font-size: 1.8rem;
+        }
+    }
+}
+}

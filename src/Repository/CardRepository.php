@@ -16,6 +16,18 @@ class CardRepository extends ServiceEntityRepository
         parent::__construct($registry, Card::class);
     }
 
+    public function findFour(): array
+   {
+       return $this->createQueryBuilder('c')
+            ->leftJoin('c.color', 'co')
+            ->addSelect('co')
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults( 4 )
+            ->getQuery()
+            ->getResult()
+        ;
+   }
+
 //    /**
 //     * @return Card[] Returns an array of Card objects
 //     */

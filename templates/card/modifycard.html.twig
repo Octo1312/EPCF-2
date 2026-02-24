@@ -3,16 +3,13 @@
 {% block title %} Assistant de création de cartes - Étape 5 {% endblock %}
 
 {% block body %}
-<section id="image">
+<section id="modify">
     <div class="form container">
-{{ form_start(stepfive) }}
-    {{form_row(stepfive.imageFile, {
-        'label': 'Image de votre carte',
-        'label_attr' : {'class' : 'file'}
-    }) }}
+{{ form_start(modifycard) }}
+    {{ form_widget(modifycard)}}
     <div class="formbtn">
         <button class="btn" type="submit">Étape suivante</button>
     </div>
-{{ form_end(stepfive) }}
+{{ form_end(modifycard) }}
 </section>
 {% endblock %}

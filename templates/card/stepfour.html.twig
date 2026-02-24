@@ -3,6 +3,7 @@
 {% block title %} Assistant de création de cartes - Étape 4 {% endblock %}
 
 {% block body %}
+<section id="color">
     <div class="form container">
 {{ form_start(stepfour) }}
     {{form_row(stepfour.color, {
@@ -12,4 +13,5 @@
         <button class="btn" type="submit">Étape suivante</button>
     </div>
 {{ form_end(stepfour) }}
+</section>
 {% endblock %}
