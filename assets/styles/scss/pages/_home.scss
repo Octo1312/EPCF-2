@@ -2,6 +2,7 @@
 @use "../abstracts/mixin" as mix;
 
 body {
+    min-height: 60vh;
     #banner {
         background-image: url(../../../../public/asset/img/banner.jpeg);
         height: 50rem;

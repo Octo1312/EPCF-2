@@ -4,15 +4,13 @@
 body {
     #creation {
         background-color: #232C33;
-        height: 60vh;
+        min-height: 60vh;
         display: flex;
         align-items: center;
 
         .container {
             @include mix.container;
             text-align: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -43,15 +41,14 @@ body {
 
     #nameandeffect, #type, #creature, #color, #artwork {
         background-color: #232C33;
-        height: 60vh;
         display: flex;
         align-items: center;
+        padding-bottom: 2rem;
+        min-height: 60vh;
 
         .container {
             @include mix.container;
             text-align: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
             display: flex;
             flex-direction: column;
             gap: 5vh;

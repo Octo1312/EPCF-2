@@ -4,6 +4,7 @@
 
 {% block body %}
 <section id="museum">
+    <h1>Toutes les créations</h1>
     <div class="container">
         <div class="cards container">
         {% for card in cards %}
@@ -26,6 +27,9 @@
             <div class="card-power">
                 <p>{{ card.strength }}/ </p>
                 <p>{{ card.toughness }}</p>
+            </div>
+            <div class="card-details">
+                <a href="{{path('detailscard',{'id' : card.id})}}">Plus d'informations ici</a>
             </div>
             </div>
         {% endfor %}    

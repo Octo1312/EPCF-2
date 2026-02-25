@@ -1,0 +1,20 @@
+
+body {
+    #museum {
+        min-height: 60vh;
+        background-color: #232C33;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        h1 {
+            text-align: center;
+            color: #F4F1DE;
+            font-size: 2rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}
+    
