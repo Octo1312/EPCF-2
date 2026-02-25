@@ -1,0 +1,30 @@
+@use "../abstracts/variable" as variable;
+@use "../abstracts/mixin" as mix;
+
+body {
+    #details {
+        background-color: #232C33;
+
+        .cards {
+            .card {
+                padding-bottom: 2rem;
+            }
+
+            .modifydelete {
+                display: flex;
+                align-items: center;
+                gap: 20vh;
+                a, input {
+                border: 1px solid #823038;
+                background-color: #823038;
+                border-radius: 1rem;
+                color: #F4F1DE;
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-decoration: none;
+                position: relative;
+            }
+            }
+        }
+    }
+}

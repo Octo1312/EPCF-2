@@ -3,27 +3,41 @@
 {% block title %} MyCustomCard - Détails de la carte {% endblock %}
 
 {% block body %}
-<div class="cards">
-<div class="card">
-    <div class="card-img">
-        <img src="{{ asset('asset/uploads/images/' ~ card.imageName) }}" alt="Img card">
+<section id="details">
+    <div class="cards">
+        <div class="card">
+            <div class="card-img">
+                <img src="{{ asset('asset/uploads/images/' ~ card.imageName) }}" alt="Img card">
+            </div>
+            <div class="card-frame">
+                <img src="{{ asset('asset/img/' ~ card.color.frame) }}" alt="Frame card">
+            </div>
+            <div class="card-stats">
+                <img src="{{ asset('asset/img/' ~ card.color.stats) }}" alt="stats card">
+            </div>
+            <div class="card-title">        
+                <h3>{{ card.name }}</h3>
+            </div>
+            <div class="card-effect">
+                <p>{{ card.effect }}</p>
+            </div>
+            <div class="card-power">
+                <p>{{ card.strength }}/ </p>
+                <p> {{ card.toughness }}</p>
+            </div>
+        </div>
+        <div class="modifydelete">
+            {% if is_granted('ROLE_USER')%}
+                {% if app.user.id == card.user.id %}
+                    <a href="{{path('modifycard',{'id' : card.id})}}">Modifier ma carte</a>
+                    <form method="POST" action="{{ path('deletecard', {'id': card.id}) }}">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{csrf_token('SUP' ~ card.id)}}">
+                        <input type="submit" id="delete" value="Supprimer ma carte">
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
-    <div class="card-frame">
-        <img src="{{ asset('asset/img/' ~ card.color.frame) }}" alt="Frame card">
-    </div>
-    <div class="card-stats">
-        <img src="{{ asset('asset/img/' ~ card.color.stats) }}" alt="stats card">
-    </div>
-    <div class="card-title">        
-        <h3>{{ card.name }}</h3>
-    </div>
-    <div class="card-effect">
-        <p>{{ card.effect }}</p>
-    </div>
-    <div class="card-power">
-        <p>{{ card.strength }}/ </p>
-        <p> {{ card.toughness }}</p>
-    </div>
-</div>
-</div>
+</section>
 {% endblock %}
