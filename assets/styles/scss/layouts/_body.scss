@@ -19,4 +19,10 @@ body {
     main {
         min-height: calc(100vh - 284px);
     }
+
+    @media screen and (max-width: 424px) {
+        main {
+            min-height: calc(100vh - 193px );
+        }
+    }
 }
